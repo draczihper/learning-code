@@ -1,6 +1,11 @@
-let rabbit = {};
-rabbit.speak = function(line) {
-    console.log("The rabbit says " + "'" + line + "'");
+function Rabbit(type) {
+    this.type = type;
 }
 
-rabbit.speak("I'm alive.")
+Rabbit.prototype.toString = function () {
+    return `a ${this.type} rabbit`;
+};
+
+let blackRabbit = new Rabbit("black")
+
+console.log(String(blackRabbit));
