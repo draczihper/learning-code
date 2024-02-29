@@ -1,20 +1,21 @@
+class InputError extends Error {}
 function promptDirection(question) {
-    let result = prompt(question);
-    if (result.toLowerCase() == "left") return "L";
-    if (result.toLowerCase() == "right") return "R";
-    throw new Error("Invalid direction: " + result);
+  let result = prompt(question);
+  if (result.toLowerCase() == "left") return "L";
+  if (result.toLowerCase() == "right") return "R";
+  throw new InputError("Invalid direction: " + result);
 }
 
-function look() {
-    if (promptDirection("Which way?") == "L") {
-        return "a house";
+for (;;) {
+  try {
+    let dir = proptDirection("Where?");
+    console.log("You chose ", dir);
+    break;
+  } catch (e) {
+    if (e instanceof InputError) {
+      console.log("Not a valid direction. Try again.");
     } else {
-        return "two angry bears";
+      throw e;
     }
-}
-
-try {
-    console.log("You see", look());
-} catch (error) {
-    console.log("Something went wrong-> " + error);
+  }
 }
