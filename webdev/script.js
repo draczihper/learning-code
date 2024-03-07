@@ -3,5 +3,5 @@ function getDate(string) {
     return new Date(year, month - 1, day);
 }
 
-console.log(getDate("31-2-2011"));
+console.log(getDate("31-Sep-1999"));
 
