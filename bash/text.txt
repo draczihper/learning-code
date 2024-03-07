@@ -1,0 +1,16 @@
+some
+random
+texts
+which 
+i 
+want 
+to 
+sort
+in 
+a 
+command
+line
+interface
+of
+ubuntu
+
