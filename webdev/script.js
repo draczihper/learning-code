@@ -1,1 +1,1 @@
-setTimeout(() => console.log("Tick"), 10000)
+setTimeout((a, b) => console.log(a * b), 10000)
