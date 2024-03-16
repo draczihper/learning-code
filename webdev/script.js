@@ -1,10 +1,13 @@
-function* powers(n) {
-    for (let current = n;; current *= n) {
-        yield current
-    }
-}
+// ITERATOR EXAMPLE
+// Create an array
+let fruits = ['apple', 'banana', 'cherry'];
 
-for (let power of powers(3)) {
-    if (power > 50) break;
-    console.log(power);
+// Get the iterator for the array
+let iterator = fruits[Symbol.iterator]();
+
+// Use the iterator to go through the items
+let result = iterator.next();
+while (!result.done) {
+    console.log(result.value); // Print the current
+    result = iterator.next(); // MOve to the next item
 }
