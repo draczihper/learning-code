@@ -10,12 +10,15 @@
     <script>
         window.addEventListener("keydown", event => {
             if (event.key == "v") {
-                document.body.style.background = "violet";
+                let button = document.createElement("button");
+                let buttonEl = document.createTextNode("Button");
+                button.appendChild(buttonEl);
+                document.body.append(button)
             }
         });
         window.addEventListener("keyup", event => {
             if (event.key == "v") {
-                document.body.style.background = "";
+                document.body = "";
             }
         });
     </script>
