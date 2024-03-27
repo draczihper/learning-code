@@ -6,25 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-        #progress {
-            border-bottom: 2px solid blue;
-            width: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-    </style>
-    <div id="progress"></div>
+    <textarea name="" id="" cols="30" rows="10">Type something here...</textarea>
     <script>
-        // Create some content
-        document.body.appendChild(document.createTextNode("supercarlifragilisticexpialidocious ".repeat(1000)));
-
-        let bar = document.querySelector("#progress");
-        window.addEventListener("scroll", () => {
-            let max = document.body.scrollHeight - innerHeight;
-            bar.style.width = `${(pageYOffset / max) * 100}%`
-        });
+        let textarea = document.querySelector("textarea");
+        let timeout;
+        textarea.addEventListener("input", () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => console.log("Typed!"), 500)
+        })
     </script>
 </body>
 </html>
