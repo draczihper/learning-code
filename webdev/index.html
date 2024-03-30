@@ -6,9 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <textarea name="" id="" cols="30" rows="10">Type something here...</textarea>
-    <script>
-        `I couldn't write because of a blackout and I have been feeling worse these past few days`
-    </script>
+    <canvas width="600" height="300"></canvas>
+<script>
+let cx = document.querySelector("canvas").getContext("2d");
+function branch(length, angle, scale) {
+cx.fillRect(0, 0, 1, length);
+if (length < 8) return;
+cx.save();
+cx.translate(0, length);
+cx.rotate(-angle);
+branch(length * scale, angle, scale);
+cx.rotate(2 * angle);
+branch(length * scale, angle, scale);
+cx.restore();
+}
+cx.translate(300, 0);
+branch(60, 0.5, 0.8);
+</script>
 </body>
 </html>
