@@ -1,4 +1,1 @@
-fetch("https://github.com/draczihper").then(response => {
-    console.log(response.status);
-    console.log(response.headers.get("Content-Type"));
-})
+fetch("/example.txt").then(response => response.text()).then(text => console.log(text));
