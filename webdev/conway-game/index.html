@@ -77,7 +77,21 @@
     return newGrid;
   }
 
-  
+  function turn() {
+    checkboxesFromGrid(nextGeneration(gridFromCheckboxes()));
+  }
+
+  document.querySelector("#next").addEventListener("click", turn);
+
+  let running = null;
+  document.querySelector("#run").addEventListener("click", () => {
+    if (running) {
+      clearInterval(running);
+      running = null;
+    } else {
+      running = setInterval(turn, 400);
+    }
+  });
 </script>
 </body>
 </html>
