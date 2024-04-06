@@ -1,4 +1,4 @@
-const {reverse} = require("./reverse");
+const {reverse} = require("../reverse/reverse");
 
 let argument = process.argv[2];
 
