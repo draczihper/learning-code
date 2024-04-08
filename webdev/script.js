@@ -1,6 +1,5 @@
-const {readFile} = require("fs");
-readFile("file.txt", (e, b) => {
-if (e) throw error;
-console.log("
-Error");
+const {writeFile} = require("fs");
+writeFile("graffiti.txt", "Node was here", err => {
+    if (err) console.log(`Failed to write file: ${err}`);
+    else console.log("File written.");
 });
