@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     if(req.body._id == '') {
         insertRecord(req, res)
     } else {
-        updateReocord(req, res)
+        updateRecord(req, res)
     }
 });
 
@@ -75,3 +75,5 @@ router.get("delete/:id", (req, res) => {
         }
     });
 });
+
+module.exports = router;
