@@ -35,35 +35,11 @@
 
 
         
-        const getNewImage = function () {
+        const getNewImage = async function () {
             if (searchInput.value == "") searchInput.value = "cats"
-            fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + api_key + "&s=" + searchInput.value, {mode: 'cors'})
-                .then((response) => {
-                    if(response.ok) { 
-                        return response.json()
-                }
-                    return Promise.reject(response);
-            })
-                .then((response) => img.src = response.data.images.original.url)
-            .catch ((response, error) => {
-                console.log(error)
-
-                switch (response.status) {
-                    case 401:
-                        span.textContent = response.status + " Unauthorized";
-                        break;
-                    case 429:
-                        span.textContent = response.status + " Too many requests";
-                        break;
-                    case 500:
-                        span.textContent = response.status + " Internal server error";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            
-        )
+            const response = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + api_key + "&s=" + searchInput.value, {mode: 'cors'});
+            const catData = await response.json();
+            img.src = catData.data.images.original.url;
         
     }
     newBtn.addEventListener('click', getNewImage);
