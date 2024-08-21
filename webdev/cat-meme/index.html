@@ -4,17 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Meme</title>
+    <style>
+        
+        img {
+            display: block;
+            margin-top: 10px;
+        }
+
+
+    </style>
 </head>
 <body>
+        <label for="search">Search:
+            <input type="text" id="search" required>
+        </label>
+    <button id="new-btn">New Image</button>
     <img src="#" alt="">
+    <span></span>
     <script>
+        window.onload = () => {
+            getNewImage();
+        };
+        // bb2006d9d3454578be1a99cfad65913d
+        // IwN0SK4DY3rEfbh9scRFKgKCsqk1Q0xh
+        const api_key = "bb2006d9d3454578be1a99cfad65913d";
         const img = document.querySelector('img');
-        fetch("https://api.giphy.com/v1/gifs/translate?api_key=IwN0SK4DY3rEfbh9scRFKgKCsqk1Q0xh&s=cats", {mode: 'cors'})
-        .then(function(response) {
-            return response.json();
-        }).then(function(response) {
-            img.src = response.data.images.original.url;
-        })
+        const newBtn = document.querySelector('#new-btn');
+        const searchInput = document.querySelector("#search");
+        const span = document.querySelector("span");
+
+
+        
+        const getNewImage = function () {
+            if (searchInput.value == "") searchInput.value = "cats"
+            fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + api_key + "&s=" + searchInput.value, {mode: 'cors'})
+                .then((response) => {
+                    if(response.ok) { 
+                        return response.json()
+                }
+                    return Promise.reject(response);
+            })
+                .then((response) => img.src = response.data.images.original.url)
+            .catch ((response) => {
+                console.log(response)
+
+                switch (response.status) {
+                    case 401:
+                        span.textContent = response.status + " Unauthorized";
+                        break;
+                    case 429:
+                        span.textContent = response.status + " Too many requests";
+                        break;
+                    case 500:
+                        span.textContent = response.status + " Internal server error";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+        )
+        
+    }
+    newBtn.addEventListener('click', getNewImage);
     </script>
 </body>
 </html>
