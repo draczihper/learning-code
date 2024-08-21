@@ -45,8 +45,8 @@
                     return Promise.reject(response);
             })
                 .then((response) => img.src = response.data.images.original.url)
-            .catch ((response) => {
-                console.log(response)
+            .catch ((response, error) => {
+                console.log(error)
 
                 switch (response.status) {
                     case 401:
