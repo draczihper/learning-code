@@ -15,10 +15,11 @@ if (parent && typeof parent.appendChild === 'function') {
     parent.appendChild(this.element);
   }
   
-  this.getElement = function() {
+this.getElement = function() {
     return this.element;
   };
 }
 
 const containerDiv = new CreateElement("div", "class", "container", "hello", mainEl);
 const h1 = new CreateElement("h1", "", "", "Hello World", containerDiv);
+const p = new CreateElement("p", "", "", "This is a paragraph", containerDiv);
