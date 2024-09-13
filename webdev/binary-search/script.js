@@ -16,4 +16,7 @@ const binarySearch = (arr, target) => {
 		}
 	}
 	return false;
+
+
+	
 };
