@@ -5,10 +5,10 @@ class Graph {
 		this.vertexData = new Array(size).fill("")
 	}
 
-	addEdge(i, j) {
-		if(i >= 0 && i < this.size && v >= 0 && v < this.size){
-			this.adjMatrix[i][j] = 1;
-			this.adjMatrix[j][i] = 1;
+	addEdge(u, v) {
+		if(u >= 0 && u < this.size && v >= 0 && v < this.size){
+			this.adjMatrix[u][v] = 1;
+			this.adjMatrix[v][u] = 1;
 		}
 	}
 
@@ -29,4 +29,16 @@ class Graph {
 			console.log("Vertex " + i + ": " + vertexData[i]);
 		}
 	}
+
+	dfsUtil(v, visited){
+		visited[v] = true;
+		console.log(vertexData[v] + " ");
+		for(let i = 0; i < size; i++){
+			if (adjMatrix[v][i] == 1 && !visited[i]){
+				dfsUtil(i, visited);
+			}
+		}
+	}
+
+	
 }
