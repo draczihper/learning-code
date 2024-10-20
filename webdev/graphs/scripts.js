@@ -26,7 +26,7 @@ class Graph {
 
 		console.log("\nVertex Data:");
 		for(let i = 0; i < size; i++){
-			console.log("Vertex " + i + ": " + vertexData[i]);
+			console.log("Vertex " + i + ": " + this.vertexData[i]);
 		}
 	}
 
@@ -34,11 +34,15 @@ class Graph {
 		visited[v] = true;
 		console.log(vertexData[v] + " ");
 		for(let i = 0; i < size; i++){
-			if (adjMatrix[v][i] == 1 && !visited[i]){
+			if (this.adjMatrix[v][i] == 1 && !visited[i]){
 				dfsUtil(i, visited);
 			}
 		}
 	}
 
-	
+	dfs(startVertexData){
+		let visited = new Array(this.size).fill(false);
+		let startVertex = this.vertexData.indexOf(startVertexData);
+		this.dfsUtil(startVertex, visited);
+	}
 }
