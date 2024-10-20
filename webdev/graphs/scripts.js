@@ -14,7 +14,19 @@ class Graph {
 
 	addVertex(vertex, data){
 		if (vertex >= 0 && vertex < this.size){
-			
+			this.vertexData[vertex] = data;
+		}
+	}
+
+	printGraph() {
+		console.log("\nAdjacency Matrix:");
+		for row of this.adjMatrix {
+			row.map(cell => console.log(cell + " "));
+		}
+
+		console.log("\nVertex Data:");
+		for(let i = 0; i < size; i++){
+			console.log("Vertex " + i + ": " + vertexData[i]);
 		}
 	}
 }
