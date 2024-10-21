@@ -66,3 +66,29 @@ class Graph {
 
 }
 
+g = new Graph(7);
+
+
+g.addVertex(0, "A");
+g.addVertex(1, "B");
+g.addVertex(2, "C");
+g.addVertex(3, "D");
+g.addVertex(4, "E");
+g.addVertex(5, "F");
+g.addVertex(6, "G");
+
+
+g.addEdge(3, 0);
+g.addEdge(0, 2);
+g.addEdge(0, 3);
+g.addEdge(0, 4);
+g.addEdge(4, 2);
+g.addEdge(2, 5);
+g.addEdge(2, 1);
+g.addEdge(2, 6);
+g.addEdge(1, 5);
+
+g.printGraph();
+
+console.log("\nDepth First Search starting from vertex D:")
+g.bfs("D")
