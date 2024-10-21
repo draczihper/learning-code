@@ -30,6 +30,17 @@ class Graph {
 		}
 	}
 
+	dfsUtil(v, visited){
+		visited[v] = true;
+		console.log(this.vertexData[v] + " ");
+		for(let i = 0; i < this.size; i++){
+			if (this.adjMatrix[v][i] == 1 && !visited[i]){
+				this.dfsUtil(i, visited);
+			}
+		}
+	}
+
+
 	dfs(startVertexData){
 		let visited = new Array(this.size).fill(false);
 		let startVertex = this.vertexData.indexOf(startVertexData);
