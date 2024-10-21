@@ -46,5 +46,23 @@ class Graph {
 		let startVertex = this.vertexData.indexOf(startVertexData);
 		this.dfsUtil(startVertex, visited);
 	}
+
+	bfs(startVertexData) {
+		let queue = [this.vertexData.indexOf(startVertexData)];
+		let visited = new Array(this.size).fill(false);
+		visited[queue[0]] = true;
+
+		while (queue.length) {
+			let currentVertex = queue.shift(0);
+			console.log(this.vertexData[currentVertex] + " ");
+			for (let i = 0; i < this.size; i++) {
+				if (this.adjMatrix[currentVertex][i] === 1 && !visited[i]){
+					queue.push(i);
+					visited[i] = true;
+				}
+			}
+		}
+	}
+
 }
 
