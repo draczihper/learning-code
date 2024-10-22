@@ -40,6 +40,27 @@ class Graph {
 		}
 	}
 
+	dfsUtil2(v, visited, parent) {
+		visited[v] = true;
+		// recStack[v] = true; // Add this for directed graph cycle detection
+
+		// console.log("Current vertex:", this.vertexData[v])
+
+		for (let i = 0; i < this.size; i++){
+			if(this.adjMatrix[v][i] === 1){
+				if(!visited[i]){
+					if(this.dfsUtil2(i, visited, v)){ // v = recStack on the last arg
+						return true;
+					} else if( parent != i){ // recStack[i]
+						return true;
+					}
+				}
+			}
+		}
+		// recStack[v] = false;
+		return false;
+	}
+
 
 	dfs(startVertexData){
 		let visited = new Array(this.size).fill(false);
