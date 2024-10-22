@@ -128,3 +128,5 @@ g.printGraph();
 
 console.log("\nDepth First Search starting from vertex D:")
 g.bfs("D")
+
+console.log("\nGraph has a cycle:", g.isCyclic())
