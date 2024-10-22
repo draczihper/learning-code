@@ -85,6 +85,21 @@ class Graph {
 		}
 	}
 
+	isCyclic(){
+		let visited = new Array(this.size).fill(false);
+		// let recStack = new Array(this.size).fill(false)
+		for(let i = 0; i < this.size; i++){
+			if(!visited[i]){
+				// console.log()
+				if (this.dfsUtil2(i, visited, -1)){ // -1 = recStack on the last arg 
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+
 }
 
 g = new Graph(7);
